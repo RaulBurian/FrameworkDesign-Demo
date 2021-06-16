@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row mx-auto border border-1 border-info">
+    <form (ngSubmit)="uploadFile()">
+      <div class="form-group my-4">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+      </div>
+      <div class="form-group my-4">
+        <label for="content">File content</label>
+        <textarea type="text" class="form-control" id="content" [(ngModel)]="fileRequestContent" name="fileRequestContent"></textarea>
+      </div>
+      <div class="row">
+        <div class="col-6 big-text-end"><span *ngIf="show">Request Received!</span> </div>
+        <div class="col-6">
+          <button class="btn btn-secondary my-4 float-end" type="submit">Upload File</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row mx-auto border border-1 border-dark my-5">
+    <form (ngSubmit)="decodeText()">
+      <div class="form-group my-4">
+        <label for="encrypt">Encoded text</label>
+        <textarea type="email" class="form-control" id="encrypt" [(ngModel)]="encodedText" name="encodedText"></textarea>
+      </div>
+      <div class="form-group my-4">
+        <label for="key">Encoding Key</label>
+        <input type="text" class="form-control" id="key" [(ngModel)]="encodingKey" name="encodingKey">
+      </div>
+      <div class="form-group my-4">
+        <label for="decode">Decoded Text</label>
+        <textarea type="text" class="form-control" id="decode" [(ngModel)]="decodedText" name="decodedText"></textarea>
+      </div>
+      <button class="btn btn-secondary float-end my-4" type="submit">Decode Text</button>
+    </form>
+  </div>
+</div>
