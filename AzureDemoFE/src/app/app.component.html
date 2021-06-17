@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <div class="row mx-auto border border-1 border-info">
+    <h1>Upload File</h1>
     <form (ngSubmit)="uploadFile()">
       <div class="form-group my-4">
         <label for="email">Email</label>
@@ -7,22 +8,30 @@
       </div>
       <div class="form-group my-4">
         <label for="content">File content</label>
-        <textarea type="text" class="form-control" id="content" [(ngModel)]="fileRequestContent" name="fileRequestContent"></textarea>
+        <textarea type="text" class="form-control" id="content" [(ngModel)]="fileRequestContent"
+                  name="fileRequestContent"></textarea>
       </div>
       <div class="row">
-        <div class="col-6 big-text-end"><span *ngIf="show">Request Received!</span> </div>
+        <div class="col-6 big-text-end"><span *ngIf="show">Request Received!</span></div>
         <div class="col-6">
-          <button class="btn btn-secondary my-4 float-end" type="submit">Upload File</button>
+          <button class="btn btn-secondary my-4 float-end my-btn" type="submit">
+            <span *ngIf="!loadingUpload"> Upload File</span>
+            <span *ngIf="loadingUpload" class="spinner-border text-light" role="status">
+              <span class="sr-only"></span>
+            </span>
+          </button>
         </div>
       </div>
     </form>
   </div>
 
   <div class="row mx-auto border border-1 border-dark my-5">
+    <h1>Decode File</h1>
     <form (ngSubmit)="decodeText()">
       <div class="form-group my-4">
         <label for="encrypt">Encoded text</label>
-        <textarea type="email" class="form-control" id="encrypt" [(ngModel)]="encodedText" name="encodedText"></textarea>
+        <textarea type="email" class="form-control" id="encrypt" [(ngModel)]="encodedText"
+                  name="encodedText"></textarea>
       </div>
       <div class="form-group my-4">
         <label for="key">Encoding Key</label>
@@ -32,7 +41,12 @@
         <label for="decode">Decoded Text</label>
         <textarea type="text" class="form-control" id="decode" [(ngModel)]="decodedText" name="decodedText"></textarea>
       </div>
-      <button class="btn btn-secondary float-end my-4" type="submit">Decode Text</button>
+      <button class="btn btn-secondary float-end my-4 my-btn" type="submit">
+        <span *ngIf="!loadingDecode">Decode Text</span>
+        <span *ngIf="loadingDecode" class="spinner-border text-light" role="status">
+              <span class="sr-only"></span>
+            </span>
+      </button>
     </form>
   </div>
 </div>
